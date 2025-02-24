@@ -1,0 +1,45 @@
+/**
+ * @name Video Background
+ * @version 1.0 Alpha
+ * @description A required CSS for video background
+ * @author Hector
+ *
+ * @source https://github.com/CapnKitten/BetterDiscord/blob/master/Themes/Translucence/css/source.css
+ */
+
+ body, #app-mount, .appMount__51fd7 {
+    background: none !important;
+ }
+
+ .theme-dark{
+    /*change last value from 0.0-1.0 to adjust opacity*/
+  --background-tertiary: rgba(25, 25, 25, 0.50) !important; 
+  --background-primary: transparent !important;
+  --background-secondary: transparent !important;
+  --background-secondary-alt: transparent !important;
+  --channeltextarea-background: transparent !important;
+  }
+  
+  
+  .wrapper-3NnKdC,
+  .scroller-1Bvpku,
+  .app-2rEoOp,
+  .theme-dark .container-1D34oG {
+    background: transparent !important;
+  }
+
+ .fullscreen-bg video,
+ .fullscreen-bg-video {
+   position: fixed !important;
+   top: 50% !important; left: 50% !important;
+   z-index: -100 !important;
+   min-width: 100% !important;
+   min-height: 100% !important;
+   width: 0;
+   height: auto;
+   transform: translate(-50%, -50%) !important;
+ }
+
+ .name__2ea32 {
+   transition: .2s ease-in-out;
+}
