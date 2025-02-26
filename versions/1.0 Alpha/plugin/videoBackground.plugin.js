@@ -376,9 +376,12 @@ module.exports = (() => {
             return `
                 ${this.generateSection('Apply', 'cachedWallpapers', 'applyWallpaperBtn', 'apply')}
                 ${this.generateSection('Delete', 'deleteVideosSelector', 'deleteVideoBtn', 'delete')}
-                <div class="ws-connect">
-                    <input type="text" id="wsUrl" placeholder="${config.ws.defaultUrl}" />
-                    <button id="connectWSBtn">Connect</button>
+                <div class="ws-connect settings-section">
+                    <h2>Connect</h2>
+                    <div class="input-section">
+                        <input type="text" id="wsUrl" placeholder="${config.ws.defaultUrl}" />
+                        <button id="connectWSBtn" class="bd-button">Connect</button>
+                    </div>
                 </div>
             `;
         }
@@ -386,9 +389,11 @@ module.exports = (() => {
         generateSection(label, selectId, buttonId, mode) {
             return `
                 <div class="settings-section">
-                    <label>${label}:</label>
-                    <select id="${selectId}">${this.generateOptions(mode)}</select>
-                    <button id="${buttonId}">${label}</button>
+                    <h2>${label}</h2>
+                    <div class="input-section">
+                        <select id="${selectId}">${this.generateOptions(mode)}</select>
+                        <button id="${buttonId}" class="bd-button">${label}</button>
+                    </div>
                 </div>
             `;
         }
