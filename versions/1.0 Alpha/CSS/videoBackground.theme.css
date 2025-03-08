@@ -28,7 +28,6 @@
 }
 
 div#videoBackgroundSettings {
-  color-scheme: dark;
   display: flex;
   flex-direction: column;
   gap: 1.5vmin;
