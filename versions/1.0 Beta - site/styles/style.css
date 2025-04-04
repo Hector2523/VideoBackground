@@ -1,23 +1,59 @@
 @charset "UTF-8";
 
 :root {
-    --setings-section-h2-colorlight: black;
-    --setings-section-h2-colordark: rgba(245, 245, 245, 0.861);
-    /*change last value from 0.0 - 1.0 to adjust opacity*/
-    --setings-section-button-bgcolordark: #5462ea;
-    --setings-section-button-hover-bgcolordark: #3E62E3;
-    --setings-section-button-colordark: rgb(61, 58, 58);
-    --setings-section-button-hover-colordark: rgb(20, 19, 19);
-    --inputs-text-color: #fff;
+    /* Background colors */
+    --color-bg-primary: rgba(20, 20, 20, 0.8);
     --color-bg-dark: rgba(28, 28, 30, 0.807);
-    --shadow-black-50: rgba(0, 0, 0, 0.5);
-    /*change last value from 0.0 - 1.0 to adjust opacity*/
+    --color-bg-wallpaper: rgba(32, 32, 32, 0.75);
+    --color-bg-transparent: transparent;
+    --color-bg-input-focus: rgba(255, 255, 255, 0.1);
+    
+    /* Text colors */
+    --color-text-primary: #fff;
+    --color-text-secondary: rgba(245, 245, 245, 0.861);
+    --color-text-wallpaper: rgb(209, 209, 209);
+    --color-text-error: rgb(235, 49, 49);
+    
+    /* Button colors */
+    --color-button-primary: #5462ea;
+    --color-button-hover: #3E62E3;
+    --color-button-text: rgb(61, 58, 58);
+    --color-button-text-hover: rgb(20, 19, 19);
+    --color-close-button-outside-shadow-color: transparent;
+    --color-svg-upload-close-button: rgba(219, 219, 219, 0.822);
+    --color-svg-upload-close-hover-button: rgb(255, 255, 255);
+    
+    /* Icon colors */
+    --color-icon-primary: rgb(211, 211, 211);
+    --color-icon-arrow: rgb(43, 41, 41);
+    --color-icon-selected: #10a64a;
+    
+    /* UI element colors */
+    --color-close-button-bg: transparent;
+    --color-close-button-border: transparent;
+    --color-upload-border: rgb(82, 82, 82);
+    --color-arrow-bg: #ffffff80;
+    --color-arrow-hover: #dbdbdbd3;
+    
+    /* Shadow colors */
+    --color-shadow-primary: rgba(0, 0, 0, 0.5);
+    --color-shadow-hover: rgba(135, 207, 235, 0.186);
+    --color-shadow-focus: skyblue;
+    --color-shadow-wallpaper: rgba(0, 0, 0, 0.2);
+    --color-shadow-arrow: rgba(0, 0, 0, 0.486);
+    --color-shadow-trash: rgba(0, 0, 0, 0.1);
+    
+    /* Legacy variables (kept for compatibility) */
+    --video-background-settings-bg-color: var(--color-bg-primary);
+    --setings-section-h2-colorlight: black;
+    --setings-section-h2-colordark: var(--color-text-secondary);
+    --setings-section-button-bgcolordark: var(--color-button-primary);
+    --setings-section-button-hover-bgcolordark: var(--color-button-hover);
+    --setings-section-button-colordark: var(--color-button-text);
+    --setings-section-button-hover-colordark: var(--color-button-text-hover);
+    --inputs-text-color: var(--color-text-primary);
     --color-transparent: transparent;
-    --shadow-hover: rgba(135, 207, 235, 0.186);
-    /*change last value from 0.0 - 1.0 to adjust opacity*/
-    --shadow-focus: skyblue;
     --background-tertiary-color: rgba(25, 25, 25, 0);
-    /*change last value from 0.0 - 1.0 to adjust opacity*/
     --background-primary-color: transparent;
     --background-secondary-color: transparent;
     --background-secondary-alt-color: transparent;
@@ -28,11 +64,10 @@
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
-    color: #fff;
+    color: var(--color-text-primary);
     height: 100vh;
     width: 100vw;
     background: url('../img/illustration-anime-character-rain.jpg') no-repeat center center fixed;
@@ -46,6 +81,7 @@ body {
 
 div#videoBackgroundSettings {
     position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -54,18 +90,8 @@ div#videoBackgroundSettings {
     padding: 2vmin;
     gap: 1.5vmin;
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--color-bg-primary);
     border-radius: 16px;
-}
-
-div#videoBackgroundSettings h1 {
-    font-size: 20px;
-    line-height: 24px;
-    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-style: inherit;
-    vertical-align: baseline;
-    color: white;
-    font-weight: 600;
 }
 
 div#videoBackgroundSettings div.settings-section {
@@ -84,68 +110,93 @@ div#videoBackgroundSettings div.settings-section.apply {
 }
 
 div#videoBackgroundSettings div.settings-section>h2 {
-    color: var(--setings-section-h2-colordark);
+    color: var(--color-text-secondary);
     font-size: 16px;
     line-height: 16px;
+    margin-top: 1vmin;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.any {
     height: 100%;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+div#videoBackgroundSettings div.settings-section.apply div.any.disable {
+    display: none;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.any p {
     font-size: 18px;
     font-weight: 600;
-    color: rgb(235, 49, 49);
+    color: var(--color-text-error);
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers {
+    display: none;
     height: 100%;
+}
+
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers.show {
+    display: block;
+}
+
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.tittle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers h2 {
     font-size: 24px;
     line-height: 24px;
-    margin-bottom: 1.25vmin;
+    margin-bottom: .5vmin;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 120%;
+    display: flex;
+    align-items: center;
     border-radius: .4vw;
+    position: relative;
     overflow: hidden;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container {
     position: relative;
     width: max-content;
-    height: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    object-position: center center;
+    height: 90%;
+    overflow: hidden;
     display: flex;
     align-items: center;
+    padding: 10% 10px;
     gap: 10px;
-    margin-left: 10px;
     transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper {
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: .4vw;
-    height: 90%;
+    height: 80%;
     width: 212px;
-    background-color: rgba(32, 32, 32, 0.75);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: var(--color-bg-wallpaper);
+    box-shadow: 0px 0px 10px var(--color-shadow-wallpaper);
     cursor: pointer;
     border-radius: .4vw;
+    transform: translateZ(0);
+    transition: .4s;
+}
+
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper:hover {
+    box-shadow: 0px 0px 15px rgba(126, 119, 119, 0.6);
+    transform: translate3d(0, -.5rem, 1rem);
+    perspective: 100px;
+    transform-style: preserve-3d;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.selected {
@@ -160,14 +211,14 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     z-index: 999;
 }
 
-div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper.first div.selected {
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper.selected div.selected {
     display: flex;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.selected svg {
     height: 100%;
     width: 100%;
-    fill: #10a64a;
+    fill: var(--color-icon-selected);
     pointer-events: none;
 }
 
@@ -177,18 +228,23 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     height: 80%;
     width: 100%;
     border-radius: .4vw;
+    object-position: center center;
     overflow: hidden;
     z-index: 777;
 }
 
-div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.video img {
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.video img,
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.video video {
     object-position: center center;
-    height: 100%;
-    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    max-height: 110%;
+    max-width: 110%;
     transition: .4s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
-div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper:hover div.video img {
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper:hover div.video img,
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper:hover div.video video {
     scale: 1.05;
 }
 
@@ -198,6 +254,9 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transform-style: preserve-3d;
+    position: relative;
+    z-index: 5;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.bottom div.buttons {
@@ -206,10 +265,10 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     display: inline-flex;
     align-items: center;
     gap: .25vmin;
+    transform-style: preserve-3d;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.bottom .delete-button {
-    position: relative;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -257,10 +316,14 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     overflow: hidden;
     transition: all 0.3s;
     background: transparent;
+    transform-style: preserve-3d;
+    transform: translateZ(0.1px);
+    z-index: 10;
+    pointer-events: auto;
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.bottom .editBtn:active {
-    transform: scale(0.96);
+    transform: scale(0.96) translateZ(0.1px);
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.bottom .editBtn::before {
@@ -269,7 +332,7 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     height: 200%;
     position: absolute;
     z-index: 1;
-    transform: scale(0);
+    transform: scale(0) translateZ(0);
     transition: all 0.3s;
     border-radius: 50%;
 }
@@ -280,7 +343,7 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.bottom .editBtn svg {
     height: 14px;
-    fill: rgb(211, 211, 211);
+    fill: var(--color-icon-primary);
     z-index: 3;
     transition: all 0.2s;
     transform-origin: bottom;
@@ -302,7 +365,7 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     position: absolute;
     bottom: 19px;
     left: -5px;
-    background-color: rgb(211, 211, 211);
+    background-color: var(--color-icon-primary);
     border-radius: 2px;
     z-index: 2;
     transform: scaleX(0);
@@ -321,14 +384,29 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     align-items: center;
 }
 
-div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.name p {
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.name input {
     font-size: 14px;
     line-height: 16px;
-    color: rgb(209, 209, 209);
+    max-width: 95%;
+    color: var(--color-text-wallpaper);
+    pointer-events: none;
+    background-color: transparent;
+    border: transparent;
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: justify;
+    background: none;
+    outline: none;
+    border: none;
+    transition: .4s;
+}
+
+div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.container div.wallpaper div.name input:focus {
+    pointer-events: all;
+    background-color: var(--color-bg-input-focus);
+    border: 1px solid var(--color-button-primary);
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer {
@@ -346,9 +424,9 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.name in
     font-weight: 500;
     width: 100%;
     font-size: .8vw;
-    color: var(--inputs-text-color);
+    color: var(--color-text-primary);
     background-color: var(--color-bg-dark);
-    box-shadow: 0 0 .4vw var(--shadow-black-50), 0 0 0 .15vw var(--color-transparent);
+    box-shadow: 0 0 .4vw var(--color-shadow-primary), 0 0 0 .15vw var(--color-bg-transparent);
     border-radius: 0.4vw;
     border: none;
     outline: none;
@@ -358,24 +436,24 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.name in
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.name input:hover {
-    box-shadow: 0 0 0 .15vw var(--shadow-hover);
+    box-shadow: 0 0 0 .15vw var(--color-shadow-hover);
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.name input:focus {
-    box-shadow: 0 0 0 .15vw var(--shadow-focus);
+    box-shadow: 0 0 0 .15vw var(--color-shadow-focus);
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload {
     margin-top: .5vmin;
-    border: 2px dashed rgb(82, 82, 82);
+    border: 2px dashed var(--color-upload-border);
     cursor: pointer;
     height: 3vmin;
     font-weight: 500;
     width: 99.3%;
     font-size: .8vw;
-    color: var(--inputs-text-color);
+    color: var(--color-text-primary);
     background-color: var(--color-bg-dark);
-    box-shadow: 0 0 .4vw var(--shadow-black-50), 0 0 0 .15vw var(--color-transparent);
+    box-shadow: 0 0 .4vw var(--color-shadow-primary), 0 0 0 .15vw var(--color-bg-transparent);
     border-radius: 0.4vw;
     outline: none;
     padding: 0.4vw 0;
@@ -383,11 +461,11 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload 
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload:hover {
-    box-shadow: 0 0 0 .15vw var(--shadow-hover);
+    box-shadow: 0 0 0 .15vw var(--color-shadow-hover);
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload.active {
-    box-shadow: 0 0 0 .15vw var(--shadow-focus);
+    box-shadow: 0 0 0 .15vw var(--color-shadow-focus);
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload>div.container {
@@ -431,9 +509,9 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload 
     position: relative;
     width: 20px;
     height: 20px;
-    background-color: #f9fafb;
+    background-color: var(--color-close-button-bg);
     border-radius: 50%;
-    box-shadow: 0px 0px 0px 2px #f43f5e;
+    box-shadow: 0px 0px 0px 2px var(--color-close-button-border);
     border: none;
     outline: none;
     cursor: pointer;
@@ -442,7 +520,7 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload 
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect div.close:hover div.button {
     scale: 1.1;
-    box-shadow: 0px 0px 0px 4px #f43f5e;
+    box-shadow: 0px 0px 0px 4px var(--color-close-button-outside-shadow-color);
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect div.close div.button span.symbol svg {
@@ -451,12 +529,13 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload 
     left: 50%;
     transform: translate(-50%, -50%);
     height: 90%;
-    color: black;
-    transition: 0.3s ease-in-out;
+    color: var(--color-svg-upload-close-button);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect div.close:hover div.button span.symbol svg {
-    transform: translate(-50%, -50%) rotate(180deg);
+    transform: translate(-50%, -50%) scale(1.2);
+    color: var(--color-svg-upload-close-hover-button);
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect svg.single {
@@ -480,11 +559,11 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit 
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit p {
     align-self: flex-end;
-    color: rgb(235, 49, 49);
+    color: var(--color-text-error);
     font-weight: 600;
-    font-size: 16px;
-    line-height: 16px;
-    height: 16px;
+    font-size: 1.35vmin;
+    line-height: 1.35vmin;
+    height: auto;
     margin-right: .4vw;
 }
 
@@ -497,8 +576,8 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit 
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    background-color: var(--setings-section-button-bgcolordark);
-    border: 2px solid var(--setings-section-button-bgcolordark);
+    background-color: var(--color-button-primary);
+    border: 2px solid var(--color-button-primary);
     overflow: hidden;
     border: 0;
     border-radius: 16px;
@@ -512,25 +591,8 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit 
 }
 
 div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit button:hover {
-    background-color: var(--setings-section-button-hover-bgcolordark);
-    color: var(--setings-section-button-hover-colordark);
-}
-
-div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit button::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200%;
-    height: 100%;
-    background-color: rgb(252, 70, 100);
-    transform: translateX(-100%);
-    transition: all 50s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: -1;
-}
-
-div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit button:hover::before {
-    transform: translateX(0);
+    background-color: var(--color-button-hover);
+    color: var(--color-button-text-hover);
 }
 
 /* Using CSS for icon */
@@ -547,7 +609,7 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit 
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     margin-top: 8px;
-    color: var(--setings-section-h2-colordark);
+    color: var(--color-text-secondary);
 }
 
 .gg-software-upload::after {
@@ -572,7 +634,7 @@ div#videoBackgroundSettings div.settings-section div.uploadContainer div.submit 
     border-radius: 3px;
     width: 2px;
     height: 10px;
-    background: var(--setings-section-h2-colordark);
+    background: var(--color-text-secondary);
     left: 5px;
     bottom: 3px;
 }
@@ -586,8 +648,8 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
     transform: translateY(-50%);
     height: 35px;
     width: 35px;
-    background-color: #ffffff80;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.486);
+    background-color: var(--color-arrow-bg);
+    box-shadow: 0px 0px 5px var(--color-shadow-arrow);
     border-radius: 50%;
     cursor: pointer;
     z-index: 999;
@@ -616,7 +678,7 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.left:hover {
     height: 40px;
     width: 40px;
-    background-color: #dbdbdbd3;
+    background-color: var(--color-arrow-hover);
 }
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.right span.symbol,
@@ -626,7 +688,7 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.right span.symbol svg,
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.left span.symbol svg {
-    fill: rgb(43, 41, 41);
+    fill: var(--color-icon-arrow);
     height: 24px;
     width: 24px;
     scale: 1;
@@ -638,5 +700,52 @@ div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wa
 
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.right:hover span.symbol svg,
 div#videoBackgroundSettings div.settings-section.apply div.showWallpapers div.wallpapersContainer div.left:hover span.symbol svg {
-    fill: rgb(43, 41, 41);
+    fill: var(--color-icon-arrow);
 }
+
+/* Second Animation SVG */
+
+
+/* - --color-close-button-bg : #f9fafb
+- --color-close-button-border : #f43f5e
+- --color-close-button-outside-shadow-color : #f43f5e
+- --color-svg-upload-close-button : black
+- --setings-section-h2-colordark : This is a legacy variable that references --color-text-secondary which is rgba(245, 245, 245, 0.861)*/
+
+/* div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect div.close div.button {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-close-button-bg);
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 2px var(--color-close-button-border);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect div.close:hover div.button {
+    scale: 1.1;
+    box-shadow: 0px 0px 0px 4px var(--color-close-button-outside-shadow-color);
+}
+
+div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect div.close div.button span.symbol svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    color: var(--color-svg-upload-close-button);
+    transition: 0.3s ease-in-out;
+}
+
+div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect div.close:hover div.button span.symbol svg {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+div#videoBackgroundSettings div.settings-section div.uploadContainer div.upload div.container div.uploadedSect svg.symbol {
+    fill: var(--setings-section-h2-colordark);
+    width: auto;
+    height: 90%;
+} */
